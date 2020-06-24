@@ -105,7 +105,7 @@ run: build ## Build and run
 	@$(MAKE) --no-print-directory run-plugins
 
 	# Start an instance of our Ansible image to perform setup on the running instance
-	docker run --rm --network=container:grafana $(PROJ_NAME)/ansible:${TAG}
+	docker run --rm --network=host $(PROJ_NAME)/ansible:${TAG}
 	@$(shell rm -rf ansible/dashboards/*)
 	@$(shell rm -rf ansible/tasks/plugin_tasks/*)
 	docker ps
@@ -118,7 +118,7 @@ run-nc: build-nc ## Build and run
 	@$(MAKE) --no-print-directory run-plugins
 
 	# Start an instance of our Ansible image to perform setup on the running instance
-	docker run --rm --network=container:grafana $(PROJ_NAME)/ansible:${TAG}
+	docker run --rm --network=host $(PROJ_NAME)/ansible:${TAG}
 	@$(shell rm -rf ansible/dashboards/*)
 	@$(shell rm -rf ansible/tasks/plugin_tasks/*)
 	docker ps

@@ -17,33 +17,32 @@ services:
       options:
         max-file: "5"
         max-size: 10m
-    networks:
-      - eseries_perf_analyzer
+    network_mode: host
     volumes:
       - ./influx-database:/var/lib/influxdb
 
-  grafana:
-    image: ${PROJ_NAME}/grafana:${TAG}
-    container_name: grafana
-    restart: unless-stopped
-    depends_on:
-      - influxdb
-    ports:
-      - 3000:3000
-    volumes:
-      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
-      - grafana_data:/var/lib/grafana
-    logging:
-      driver: "json-file"
-      options:
-        max-file: "5"
-        max-size: 10m
-    networks:
-      - eseries_perf_analyzer
+#  grafana:
+#    image: ${PROJ_NAME}/grafana:${TAG}
+#    container_name: grafana
+#    restart: unless-stopped
+#    depends_on:
+#      - influxdb
+#    ports:
+#      - 3001:3000
+#    volumes:
+#      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
+#      - grafana_data:/var/lib/grafana
+#    logging:
+#      driver: "json-file"
+#      options:
+#        max-file: "5"
+#        max-size: 10m
+#    networks:
+#      - docker_nabox
 
 networks:
-  eseries_perf_analyzer:
+  docker_nabox:
     external: true
 
-volumes:
-  grafana_data:
+#volumes:
+#  grafana_data:

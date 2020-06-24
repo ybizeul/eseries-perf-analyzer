@@ -2,7 +2,7 @@
   "name":"WSP",
   "label": "WSP",
   "type": "influxdb",
-  "url":"http://influxdb:8086",
+  "url":"http://localhost:8086",
   "access":"proxy",
   "basicAuth": false,
   "isDefault": true,
